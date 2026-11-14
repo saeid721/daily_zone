@@ -1,0 +1,9 @@
+# DAILY ZONE BD
+
+> DAILY ZONE BD is an e-commerce store in Bangladesh selling sneakers, sandals, apparel, and accessories.
+
+## Site
+- [Homepage](https://dailyzonebd.com/): New arrivals, featured categories, and best-selling products
+- [Sneakers](https://dailyzonebd.com/products/sneakers): Sneaker catalog
+- [Sandals](https://dailyzonebd.com/products/loafers-and-sandal): Sandals and loafers catalog
+- [Contact](https://dailyzonebd.com/contact): Store contact information

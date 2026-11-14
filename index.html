@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <link rel="preconnect" href="%VITE_ADMIN_BASE_URL%" crossorigin />
+  <link rel="preconnect" href="https://images.weserv.nl" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://connect.facebook.net" />
+
+  <script>
+    window.__bannersPromise = fetch('%VITE_API_URL%'.replace(/\/+$/, '') + '/banners', { credentials: 'omit' })
+      .then(function (r) { return r.json(); })
+      .catch(function () { return null; });
+  </script>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.png" />
+
+  <!-- ✅ Responsive -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ✅ Google Verification -->
+  <meta name="google-site-verification" content="-NRNFDFkYtf7BzUM3XRKpZniUYgf-egJ7O4FWFgBWtM" />
+
+  <!-- ✅ Canonical URL -->
+  <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+  <!-- ✅ Basic SEO -->
+  <meta name="robots" content="index, follow" />
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) — must stay eager, no-JS fallback -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHLMFBW4" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Meta Pixel (noscript) — must stay eager, no-JS fallback -->
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=%VITE_FB_PIXEL_ID%&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel (noscript) -->
+
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+
+  <script>
+    function __loadDeferredTracking() {
+      var scheduleTracking = window.requestIdleCallback || function (cb) { setTimeout(cb, 2000); };
+      scheduleTracking(function () {
+        // ---- Google Tag Manager ----
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || []; w[l].push({
+            'gtm.start': new Date().getTime(), event: 'gtm.js'
+          });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+          j.async = true;
+          j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-KHLMFBW4');
+
+        // ---- Meta Pixel ----
+        !function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+          t = b.createElement(e); t.async = !0; t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '%VITE_FB_PIXEL_ID%');
+        fbq('track', 'PageView');
+      }, { timeout: 3000 }); // fires when browser truly idle, max wait 3s
+    }
+
+    if (document.readyState === 'complete') {
+      __loadDeferredTracking();
+    } else {
+      window.addEventListener('load', __loadDeferredTracking);
+    }
+  </script>
+</body>
+
+</html>
